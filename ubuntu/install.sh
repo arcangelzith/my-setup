@@ -28,18 +28,18 @@ fi
 
 arcanrc="
 if [ -f ~/.arcanrc ]; then
-    . ~/.arcanrc
+    . ~/.barcanrc
 fi
 "
 
 if ! grep '.arcanrc' ~/.bashrc; then
     echo "Updating ~/.bashrc"
-    echo $arcanrc >> ~/.bashrc
+    echo "$arcanrc" >> ~/.bashrc
 fi
 
 if ! grep '.arcanrc' ~/.zshrc; then
     echo "Updating ~/.zshrc"
-    echo $arcanrc >> ~/.zshrc
+    echo "$arcanrc" >> ~/.zshrc
 fi
 
 if ! grep 'oh-my-posh' ~/.bashrc; then
@@ -51,3 +51,4 @@ if ! grep 'oh-my-posh' ~/.zshrc; then
     echo "Adding oh-my-posh to ~/.zshrc"
     echo "eval '\$(oh-my-posh --init --shell zsh --config /usr/local/etc/oh-my-posh/$ompTheme)'" >> ~/.zshrc
 fi
+ 
