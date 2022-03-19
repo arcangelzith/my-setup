@@ -7,7 +7,7 @@ ompTheme="arcan-sh.omp.json"
 
 userName="$(whoami)"
 userRc=".${userName}rc"
-userRcFile="~/$userName"
+userRcFile="~/$userRc"
 
 if ! [[ -f /usr/local/bin/oh-my-posh ]]; then
     sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
