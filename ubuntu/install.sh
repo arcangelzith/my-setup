@@ -22,9 +22,9 @@ if ![ -f /usr/bin/zsh ]; then
     sudo apt autoclean
 fi
 
-wget "${myrepo}/ubuntu/.arcanrc" -O ~/.arcanrc
-
-omprc="eval '\$(oh-my-posh --init --shell $shellName --config /usr/local/etc/oh-my-posh/$ompTheme'" > 
+if ![ -f ~/.arcanrc ]; then
+    wget "${myrepo}/ubuntu/.arcanrc" -O ~/.arcanrc
+fi
 
 arcanrc="
 if [ -f ~/.arcanrc ]; then
@@ -32,12 +32,22 @@ if [ -f ~/.arcanrc ]; then
 fi
 "
 
-if [ "" -eq "$(grep ".arcanrc" ~/.bashrc)" ]; then
+if ![ "" -eq "$(grep '.arcanrc' ~/.bashrc)" ]; then
     echo "Updating ~/.bashrc"
     echo $arcanrc >> ~/.bashrc
 fi
 
-if [ "" -eq "$(grep ".arcanrc" ~/.zshrc)" ]; then
+if ![ "" -eq "$(grep '.arcanrc' ~/.zshrc)" ]; then
     echo "Updating ~/.zshrc"
     echo $arcanrc >> ~/.zshrc
+fi
+
+if ![ "" -eq "$(grep '\$(oh-my-posh)' ~/.bashrc)" ]; then
+    echo "Adding oh-my-posh to ~/.bashrc"
+#    echo "eval '\$(oh-my-posh --init --shell bash --config /usr/local/etc/oh-my-posh/$ompTheme'" >> ~/.bashrc
+fi
+
+if ![ "" -eq "$(grep '\$(oh-my-posh)' ~/.zshrc)" ]; then
+    echo "Adding oh-my-posh to ~/.zshrc"
+    echo "eval '\$(oh-my-posh --init --shell zsh --config /usr/local/etc/oh-my-posh/$ompTheme'" >> ~/.zshrc
 fi
