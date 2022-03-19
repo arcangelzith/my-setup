@@ -42,12 +42,12 @@ if ! grep '.arcanrc' ~/.zshrc; then
     echo $arcanrc >> ~/.zshrc
 fi
 
-if ! grep '\$(oh-my-posh)' ~/.bashrc; then
+if ! grep 'oh-my-posh' ~/.bashrc; then
     echo "Adding oh-my-posh to ~/.bashrc"
-#    echo "eval '\$(oh-my-posh --init --shell bash --config /usr/local/etc/oh-my-posh/$ompTheme'" >> ~/.bashrc
+#    echo "eval '\$(oh-my-posh --init --shell bash --config /usr/local/etc/oh-my-posh/$ompTheme)'" >> ~/.bashrc
 fi
 
-if ! grep '\$(oh-my-posh)' ~/.zshrc; then
+if ! grep 'oh-my-posh' ~/.zshrc; then
     echo "Adding oh-my-posh to ~/.zshrc"
-    echo "eval '\$(oh-my-posh --init --shell zsh --config /usr/local/etc/oh-my-posh/$ompTheme'" >> ~/.zshrc
+    echo "eval '\$(oh-my-posh --init --shell zsh --config /usr/local/etc/oh-my-posh/$ompTheme)'" >> ~/.zshrc
 fi
