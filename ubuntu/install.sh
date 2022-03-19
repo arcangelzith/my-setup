@@ -27,10 +27,10 @@ if ! [[ -f /usr/bin/zsh ]]; then
 fi
 
 if ! [[ -f $userRcFile ]]; then
-    wget "$myrepo/ubuntu/.arcanrc" -O $userRcFile
+    wget "$myrepo/ubuntu/$userRc" -O $userRcFile
 fi
 
-arcanrc="
+userRcToShellRc="
 if [ -f $userRcFile ]; then
     . $userRcFile
 fi
@@ -40,14 +40,14 @@ echo "Check if $userRcFile is registered in ~/.bashrc"
 
 if ! grep "$userRc" ~/.bashrc; then
     echo "Adding $userRcFile to ~/.bashrc"
-    echo "$arcanrc" >> ~/.bashrc
+    echo "$userRcToShellRc" >> ~/.bashrc
 fi
 
 echo "Check if $userRcFile is registered in ~/.zshrc"
 
 if ! grep "$userRc" ~/.zshrc; then
     echo "Adding $userRcFile to ~/.zshrc"
-    echo "$arcanrc" >> ~/.zshrc
+    echo "$userRcToShellRc" >> ~/.zshrc
 fi
 
 echo "Check if Oh-My-Posh is registered in ~/.bashrc"
