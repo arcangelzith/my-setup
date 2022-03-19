@@ -28,10 +28,12 @@ if [ -f ~/.arcanrc ]; then
 fi
 "
 
-if [ grep ".arcanrc" ~/.bashrc ]; then
-    echo $arcanrc >> .bashrc
+if [ "" -eq "$(grep ".arcanrc" ~/.bashrc)" ]; then
+    echo "Updating ~/.bashrc"
+    echo $arcanrc >> ~/.bashrc
 fi
 
-if [ grep ".arcanrc" ~/.zshrc ]; then
-    echo $arcanrc >> .zshrc
+if [ "" -eq "$(grep ".arcanrc" ~/.zshrc)" ]; then
+    echo "Updating ~/.zshrc"
+    echo $arcanrc >> ~/.zshrc
 fi
