@@ -26,7 +26,7 @@ if ! [[ -f /usr/bin/zsh ]]; then
     sudo apt autoclean
 fi
 
-if ! [[ -f $userRcFile ]]; then
+if ! [[ -f "$userRcFile" ]]; then
     wget "$myrepo/ubuntu/$userRc" -O $userRcFile
 fi
 
