@@ -59,6 +59,23 @@
       "type": "prompt"
     },
     {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "#444444",
+          "foreground": "#E4E4E4",
+          "leading_diamond": "\ue0b2",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "template": "{{ .Shell }} "
+          },
+          "style": "diamond",
+          "type": "shell"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
       "alignment": "left",
       "newline": true,
       "segments": [

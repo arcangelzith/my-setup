@@ -24,10 +24,7 @@ fi
 if ! [[ -f /usr/bin/zsh ]]; then
     echo "Preparing zsh installation"
 
-    sudo apt update
     sudo apt install zsh
-    sudo apt autoremove
-    sudo apt autoclean
 fi
 
 echo "Check if $userRcFile exists"
@@ -69,5 +66,5 @@ echo "Check if Oh-My-Posh is registered in ~/.zshrc"
 
 if ! grep 'oh-my-posh' ~/.zshrc; then
     echo "Adding oh-my-posh to ~/.zshrc"
-    echo "eval '\$(oh-my-posh --init --shell zsh --config /usr/local/etc/oh-my-posh/$ompTheme)'" >> ~/.zshrc
+    echo "eval \"\$(oh-my-posh --init --shell zsh --config /usr/local/etc/oh-my-posh/$ompTheme)\"" >> ~/.zshrc
 fi
