@@ -25,7 +25,7 @@ if ! [[ -f /usr/bin/zsh ]]; then
     echo "Preparing zsh installation"
 
     sudo apt update
-    sudo apt install zsh −−yes
+    sudo apt install zsh
     sudo apt autoremove
     sudo apt autoclean
 fi
