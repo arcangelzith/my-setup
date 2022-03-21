@@ -1,0 +1,74 @@
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+Import-Module Terminal-Icons
+Import-Module oh-my-posh
+oh-my-posh --init --shell pwsh --config $env:POSH_PATH\arcangel-ps.omp.json | Invoke-Expression
+
+Set-Alias ll "ls"
+
+function Wsl-Shutdown {
+  $error.clear()
+  wsl --list --running
+  if ($?) {
+    Write-Host "Apagando ..." -ForegroundColor Cyan
+    wsl --shutdown
+  }
+}
+
+Set-Alias wsloff Wsl-Shutdown
+
+
+function Option-Menu ($title, $items) {
+  Write-Host ""
+  Write-Host " $title" -ForegroundColor Cyan
+  Write-Host ("¯" * ($title.length + 2))
+
+  $menuCount = $items.length / 2
+
+  $commands = @("")
+
+  for ($i = 0; $i -lt $menuCount; $i++) {
+    $labelIndex = $i * 2
+    $labelText  = $items[$labelIndex]
+    $labelId    = $i + 1
+    $labelIdPad = "$labelId".PadLeft("$menuCount".length, ' ')
+
+    $commands += $items[$labelIndex + 1]
+
+    Write-Host " [$labelIdPad]" -NoNewline -ForegroundColor Yellow
+    Write-Host " $labelText"
+  }
+
+  Write-Host " [" -NoNewline -ForegroundColor Yellow
+  Write-Host "".PadLeft("$menuCount".length, ' ') -NoNewline
+  Write-Host "] Salir" -ForegroundColor Yellow
+  Write-Host ""
+
+  $choice = Read-Host -Prompt " Selección"
+
+  if (!($choice -eq "" -or $choice -eq $null) ) {
+    Invoke-Command -ScriptBlock $commands[$choice]
+  }
+}
+
+function Goto-Repo {
+  cd E:\Repo\
+}
+
+Set-Alias repo Goto-Repo
+Set-Alias repos Goto-Repo
+
+function XRepo {
+  $repoPath = "E:\Repo"
+  Option-Menu "Repositorios disponibles" @(
+    "Privado ($repoPath\prv\)", {
+      cd "$repoPath\prv\"
+    },
+    "Público ($repoPath\pub\)", {
+      cd "$repoPath\pub\"
+    },
+    "Base    ($repoPath\)", {
+      cd "$repoPath\"
+    }
+  )
+}

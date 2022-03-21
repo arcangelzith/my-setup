@@ -61,5 +61,6 @@ echo "Check if $userRcFile is registered in /root/.bashrc"
 
 if ! sudo grep "$userRc" /root/.bashrc; then
     echo "Adding $userRcFile to /root/.bashrc"
-    echo "$userRcToShellRc" >> /root/.bashrc
+
+    sudo sh -c "echo \"$userRcToShellRc\" >> /root/.bashrc"
 fi
