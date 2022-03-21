@@ -9,7 +9,12 @@ alias egrep='egrep --color=auto'
 
 alias cls="clear"
 
-alias z="zsh"
+alias b="exec bash"
+alias z="exec zsh"
 alias x="exit"
 
-alias omp="eval \"\$(oh-my-posh --init --shell bash --config /usr/local/etc/oh-my-posh/arcan-sh.omp.json)\""
+shellName="$(sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p)"
+
+alias omp="eval \"\$(oh-my-posh --init --shell $shellName --config /usr/local/etc/oh-my-posh/arcan-sh.omp.json)\""
+
+omp
