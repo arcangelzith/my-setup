@@ -62,8 +62,7 @@
       "alignment": "right",
       "segments": [
         {
-          "background": "#444444",
-          "foreground": "#E4E4E4",
+          "foreground": "#777777",
           "leading_diamond": "\ue0b2",
           "powerline_symbol": "\ue0b0",
           "properties": {

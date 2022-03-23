@@ -25,8 +25,8 @@ if ! [[ -f /usr/local/bin/oh-my-posh ]]; then
 
     sudo mkdir /usr/local/etc/oh-my-posh/
 
-    sudo wget "$myrepo/Oh-My-Posh/arcan-ps.omp.json" -O /usr/local/etc/oh-my-posh/arcan-ps.omp.json
-    sudo wget "$myrepo/Oh-My-Posh/arcan-sh.omp.json" -O /usr/local/etc/oh-my-posh/arcan-sh.omp.json
+    sudo wget "$myrepo/Oh-My-Posh/arcan-ps.omp.json?t=$(date +%s)" -O /usr/local/etc/oh-my-posh/arcan-ps.omp.json
+    sudo wget "$myrepo/Oh-My-Posh/arcan-sh.omp.json?t=$(date +%s)" -O /usr/local/etc/oh-my-posh/arcan-sh.omp.json
 fi
 
 echo "Check if $userRcFile exists"

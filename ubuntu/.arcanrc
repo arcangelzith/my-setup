@@ -1,3 +1,5 @@
+# Shell customizations based on https://github.com/arcangelzith/my-setup/
+
 alias ls='ls --color=auto'
 alias ll="ls -alF"
 alias la="ls -A"
@@ -18,3 +20,5 @@ shellName="$(sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p)"
 alias omp="eval \"\$(oh-my-posh --init --shell $shellName --config /usr/local/etc/oh-my-posh/arcan-sh.omp.json)\""
 
 omp
+
+unset shellName
