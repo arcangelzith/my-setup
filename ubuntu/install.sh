@@ -37,7 +37,7 @@ if ! [[ -f $userRcFile ]]; then
     wget "$myrepo/ubuntu/.arcanrc" -O $userRcFile
 fi
 
-userRcToShellRc="
+userrcImports="
 if [ -f $userRcFile ]; then
     . $userRcFile
 fi
@@ -47,14 +47,14 @@ echo "Check if $userRcFile is registered in ~/.bashrc"
 
 if ! grep "$userRc" ~/.bashrc; then
     echo "Adding $userRcFile to ~/.bashrc"
-    echo "$userRcToShellRc" >> ~/.bashrc
+    echo "$userrcImports" >> ~/.bashrc
 fi
 
 echo "Check if $userRcFile is registered in ~/.zshrc"
 
 if ! grep "$userRc" ~/.zshrc; then
     echo "Adding $userRcFile to ~/.zshrc"
-    echo "$userRcToShellRc" >> ~/.zshrc
+    echo "$userrcImports" >> ~/.zshrc
 fi
 
 echo "Check if $userRcFile is registered in /root/.bashrc"
@@ -62,5 +62,5 @@ echo "Check if $userRcFile is registered in /root/.bashrc"
 if ! sudo grep "$userRc" /root/.bashrc; then
     echo "Adding $userRcFile to /root/.bashrc"
 
-    sudo sh -c "echo \"$userRcToShellRc\" >> /root/.bashrc"
+    sudo sh -c "echo \"$userrcImports\" >> /root/.bashrc"
 fi
