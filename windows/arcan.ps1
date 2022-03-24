@@ -4,7 +4,12 @@ Set-Alias ll "ls"
 Set-Alias la "ls"
 Set-Alias l "ls"
 
-Set-Alias x "exit"
+function X () {
+    exit
+}
+
+Set-Alias grep "C:\Program Files\Git\usr\bin\grep.exe"
+Set-Alias less "C:\Program Files\Git\usr\bin\less.exe"
 
 Import-Module Terminal-Icons
 Import-Module Oh-My-Posh
@@ -16,6 +21,8 @@ function OMP () {
 OMP
 
 function Wsl-Shutdown {
+    # TODO: No apagar las distros cuyo nombre contengan la palabra docker
+
     $error.clear()
 
     wsl --list --running
@@ -49,6 +56,10 @@ function XRepo {
             cd "$repoPath\"
         }
     )
+}
+
+function Beep () {
+    [console]::beep(1000,400) && [console]::beep(1500,400) && [console]::beep(2000,400)
 }
 
 function Option-Menu ($title, $items) {
