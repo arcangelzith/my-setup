@@ -1,6 +1,7 @@
 # Shell customizations based on https://github.com/arcangelzith/my-setup/
 
 $HOME_REPO = "E:\Repo"
+$HOME_GIT  = "$((Get-Command git).Source | Split-Path | Split-Path)" 2> $null
 
 Import-Module Terminal-Icons
 Import-Module Oh-My-Posh
@@ -25,11 +26,14 @@ function Stop-RunningWsl {
 
 # Repos
 
-function gitlog {
+function Get-Logs {
+    # TODO: If current directory contains .git/ folder, then display git log
+    # TODO: If current directory contains .log files, then print using less
+    # TODO: If current directory match multiple log types, then display menu
     git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"
 }
 
-function Get-GitChildItem ($Path = ".\", $Depth = 1) {
+function Get-RepoChildItem ($Path = ".\", $Depth = 1) {
     $Path = Convert-Path $Path
 
     Write-Output ""
@@ -156,28 +160,26 @@ Set-Alias wsloff "Stop-RunningWsl"
 Set-Alias repo  "Set-RepoLocation"
 Set-Alias repos "Set-RepoLocation"
 Set-Alias xrepo "Select-Repo"
-Set-Alias frepo "Get-GitChildItem"
+Set-Alias frepo "Get-RepoChildItem"
+Set-Alias log   "Get-Logs"
+Set-Alias logs  "Get-Logs"
 
 Set-Alias ll "ls"
 Set-Alias la "ls"
 Set-Alias l  "ls"
 
-$private:git_dir = "$((Get-Command git).Source | Split-Path | Split-Path)" 2> $null
-
-if ($git_dir -ne "") {
-    $private:git_bash_commands = "grep", "less"
+if ($HOME_GIT -ne "") {
+    $private:git_bash_commands = "grep", "less", "nano", "openssl"
 
     foreach ($private:git_bash_command in $git_bash_commands) {
-        if (Test-Path -Path "$git_dir\usr\bin\$git_bash_command.exe") {
-            Set-Alias $git_bash_command "$git_dir\usr\bin\$git_bash_command.exe"
+        if (Test-Path -Path "$HOME_GIT\usr\bin\$git_bash_command.exe") {
+            Set-Alias $git_bash_command "$HOME_GIT\usr\bin\$git_bash_command.exe"
         }
     }
 
     Remove-Variable git_bash_commands
     Remove-Variable git_bash_command
 }
-
-Remove-Variable git_dir
 
 Get-Command docker-compose 2>&1 > $null
 

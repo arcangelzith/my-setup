@@ -79,13 +79,13 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#777777",
+          "foreground": "#555555",
           "foreground_templates": [
             "{{ if gt .Code 0 }}#ef5350{{ end }}"
           ],
           "properties": {
             "always_enabled": true,
-            "template": ": "
+            "template": "\u25e3 "
           },
           "style": "plain",
           "type": "exit"
