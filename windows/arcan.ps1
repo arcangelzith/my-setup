@@ -5,12 +5,15 @@ $HOME_REPO    = "E:\Repo"
 $HOME_GIT     = "$((Get-Command git).Source | Split-Path | Split-Path)" 2> $null
 
 function Update-Profile {
-    Write-Host "Downloading latest customizations" -ForegroundColor Cyan
+    Write-Host "Downloading latest customizations from https://raw.githubusercontent.com/arcangelzith/my-setup/main/windows/arcan.ps1"
 
     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/arcangelzith/my-setup/main/windows/arcan.ps1?t=$((Get-Date).Ticks)" -OutFile "$HOME_SCRIPTS\arcan.ps1"
 
     if ($?) {
-        Write-Host " `u{f01e} Restart the powershell session for the changes to take effect" -ForegroundColor Yellow
+        Write-Host "Customizations have been saved"
+        Write-Host ""
+        Write-Host "`u{f01e} Restart the powershell session for the changes to take effect" -ForegroundColor Yellow
+        Write-Host ""
     }
 }
 
