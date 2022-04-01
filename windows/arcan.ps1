@@ -135,8 +135,12 @@ function Show-Menu ($title, $items) {
     }
 }
 
-function Beep {
-    [console]::beep(1000,400) && [console]::beep(1500,400) && [console]::beep(2000,400)
+function Alert {
+    if ($?) {
+        [console]::beep(600,300) && [console]::beep(800,320) && [console]::beep(880,300)
+    } else {
+        [console]::beep(2080,360) && [console]::beep(1800,300) && [console]::beep(1980,300)
+    }
 }
 
 function X {
