@@ -7,7 +7,10 @@ $HOME_GIT     = "$((Get-Command git).Source | Split-Path | Split-Path)" 2> $null
 function Update-Profile {
     Write-Host "Downloading latest customizations from https://raw.githubusercontent.com/arcangelzith/my-setup/main/windows/arcan.ps1"
 
-    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/arcangelzith/my-setup/main/windows/arcan.ps1?t=$((Get-Date).Ticks)" -OutFile "$HOME_SCRIPTS\arcan.ps1"
+    Invoke-WebRequest `
+        -Uri "https://raw.githubusercontent.com/arcangelzith/my-setup/main/windows/arcan.ps1?t=$((Get-Date).Ticks)" `
+        -Headers @{"Cache-Control"="no-cache"} `
+        -OutFile "$HOME_SCRIPTS\arcan.ps1"
 
     if ($?) {
         Write-Host "Customizations have been saved"
@@ -172,6 +175,8 @@ function Select-Repo {
 # End Goto
 
 # Aliases
+
+Set-Alias a "Alert"
 
 Set-Alias wsloff "Stop-RunningWsl"
 
