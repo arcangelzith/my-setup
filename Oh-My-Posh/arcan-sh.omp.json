@@ -63,8 +63,6 @@
       "segments": [
         {
           "foreground": "#777777",
-          "leading_diamond": "\ue0b2",
-          "powerline_symbol": "\ue0b0",
           "properties": {
             "template": "{{ .Shell }} "
           },
