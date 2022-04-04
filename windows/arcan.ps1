@@ -47,7 +47,7 @@ function Get-Logs {
     # TODO: If current directory contains .git/ folder, then display git log
     # TODO: If current directory contains .log files, then print using less
     # TODO: If current directory match multiple log types, then display menu
-    git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"
+    git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue)%ar%Creset%C(red)%d%Creset %s"
 }
 
 function Get-RepoChildItem ($Path = ".\", $Depth = 1) {
@@ -107,7 +107,7 @@ function Get-RepoChildItem ($Path = ".\", $Depth = 1) {
 
 function Show-Menu ($title, $items) {
     Write-Host ""
-    Write-Host " $title" -ForegroundColor Cyan
+    Write-Host " $title" -ForegroundColor Green
     Write-Host ("¯" * ($title.length + 2))
   
     $menuCount = $items.length / 2
@@ -140,9 +140,14 @@ function Show-Menu ($title, $items) {
 
 function Alert {
     if ($?) {
-        [console]::beep(600,300) && [console]::beep(800,320) && [console]::beep(880,300)
+        [console]::beep(600,300)
+        [console]::beep(800,320)
+        [console]::beep(880,300)
     } else {
-        [console]::beep(2080,360) && [console]::beep(1800,300) && [console]::beep(1980,300)
+        [console]::beep(2080,360)
+        [console]::beep(1800,300)
+        [console]::beep(1980,360)
+        [console]::beep(2200,270)
     }
 }
 
