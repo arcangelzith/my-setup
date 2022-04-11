@@ -43,6 +43,10 @@ function Stop-RunningWsl {
 
 # Repos
 
+function Set-RepoPrepare {
+    # TODO: Prepare current directory using templates and config files
+}
+
 function Get-Logs {
     # TODO: If current directory contains .git/ folder, then display git log
     # TODO: If current directory contains .log files, then print using less
@@ -151,11 +155,19 @@ function Alert {
     }
 }
 
+# End Generic Functions
+
+# Common actions
+
+function Get-ChildItemLs {
+    "$((Get-ChildItem $args).name)"
+}
+
 function X {
     exit
 }
 
-# End Generic Functions
+# End Common actions
 
 # Goto
 
@@ -181,6 +193,8 @@ function Select-Repo {
 
 # Aliases
 
+Remove-Alias ls
+
 Set-Alias a "Alert"
 
 Set-Alias wsloff "Stop-RunningWsl"
@@ -192,8 +206,9 @@ Set-Alias frepo "Get-RepoChildItem"
 Set-Alias log   "Get-Logs"
 Set-Alias logs  "Get-Logs"
 
-Set-Alias ll "ls"
-Set-Alias la "ls"
+Set-Alias ls "Get-ChildItemLs"
+Set-Alias ll "dir"
+Set-Alias la "dir"
 Set-Alias l  "ls"
 
 if ($HOME_GIT -ne "") {
