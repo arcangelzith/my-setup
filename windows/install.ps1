@@ -26,8 +26,8 @@ if (Test-Path -Path $PROFILE) {
 
 Import-Module Oh-My-Posh
 
-Invoke-WebRequest -Uri "$myrepo/Oh-My-Posh/arcan-ps.omp.json?t=$(date +%s)" -OutFile "$env:POSH_THEMES_PATH\arcan-ps.omp.json"
-Invoke-WebRequest -Uri "$myrepo/Oh-My-Posh/arcan-sh.omp.json?t=$(date +%s)" -OutFile "$env:POSH_THEMES_PATH\arcan-sh.omp.json"
+Invoke-WebRequest -Uri "$myrepo/Oh-My-Posh/arcan-ps.omp.json?t=$((Get-Date).Ticks)" -OutFile "$env:POSH_THEMES_PATH\arcan-ps.omp.json"
+Invoke-WebRequest -Uri "$myrepo/Oh-My-Posh/arcan-sh.omp.json?t=$((Get-Date).Ticks)" -OutFile "$env:POSH_THEMES_PATH\arcan-sh.omp.json"
 
 Remove-Variable myrepo
 Remove-Variable user_pwsh_dir
