@@ -13,13 +13,13 @@ function Update-Profile {
         -OutFile "$HOME_SCRIPTS\arcan.ps1"
 
     if ($?) {
+        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/arcangelzith/my-setup/main/Oh-My-Posh/arcan-ps.omp.json?t=$((Get-Date).Ticks)" -OutFile "$env:POSH_THEMES_PATH\arcan-ps.omp.json"
+        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/arcangelzith/my-setup/main/Oh-My-Posh/arcan-sh.omp.json?t=$((Get-Date).Ticks)" -OutFile "$env:POSH_THEMES_PATH\arcan-sh.omp.json"
+        
         Write-Host "Customizations have been saved"
         Write-Host ""
         Write-Host "`u{f01e} Restart the powershell session for the changes to take effect" -ForegroundColor Yellow
         Write-Host ""
-        
-        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/arcangelzith/my-setup/main/Oh-My-Posh/arcan-ps.omp.json?t=$((Get-Date).Ticks)" -OutFile "$env:POSH_THEMES_PATH\arcan-ps.omp.json"
-        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/arcangelzith/my-setup/main/Oh-My-Posh/arcan-sh.omp.json?t=$((Get-Date).Ticks)" -OutFile "$env:POSH_THEMES_PATH\arcan-sh.omp.json"
     }
 }
 
